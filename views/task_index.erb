@@ -1,0 +1,31 @@
+<!doctype HTML>
+<html>
+<head>
+  <title>TodoList</title>
+</head>
+<body>
+  <h1>
+    "Welcome to the TodoList"
+  </h1>
+  <p>
+    <% @todo_list.tasks.each do |task| %>
+      <li>
+        <form href="./complete_task/<%=task.id%>" method='POST'>
+        
+          <a href="./complete_task/<%=task.id%>">  <%= task.content %> </a>  
+          <%= "Complete" if task.status_complete %>
+          <%= "Uncomplete" if !task.status_complete %>
+        </form>
+
+        <form href="./delete_task/<%=task.id%>" method='POST'>
+          <button type="submit" name="delete" value="<%=task.id%>">DELETE</button>
+        </form>
+
+      </li>
+
+        
+    <% end %>
+  </p>
+    <a href="./new_task">Add New Task</a>
+</body>
+</html>
